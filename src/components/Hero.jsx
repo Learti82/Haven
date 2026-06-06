@@ -28,9 +28,10 @@ export default function Hero() {
         alt="A beautiful modern home at golden hour"
         className="absolute inset-0 h-full w-full object-cover"
       />
-      {/* Warm gradient overlay keeps the brand palette and text legible over the photo */}
-      <div className="absolute inset-0 bg-gradient-to-br from-haven-cream/92 via-haven-beige/70 to-haven-terracotta/75" />
-      <div className="absolute inset-0 bg-gradient-to-t from-haven-charcoal/15 via-transparent to-transparent" />
+      {/* Warm gradient overlay keeps the brand palette while letting the photo show through */}
+      <div className="absolute inset-0 bg-gradient-to-br from-haven-cream/55 via-haven-beige/30 to-haven-terracotta/55" />
+      {/* Subtle scrim behind the headline area for legibility */}
+      <div className="absolute inset-0 bg-gradient-to-t from-haven-charcoal/25 via-white/10 to-white/20" />
 
       {/* Soft decorative blobs */}
       <div className="pointer-events-none absolute -top-24 -right-16 h-80 w-80 rounded-full bg-white/20 blur-3xl" />
