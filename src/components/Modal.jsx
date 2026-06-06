@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CloseIcon } from './Icons'
 
@@ -15,7 +16,7 @@ export default function Modal({ open, onClose, title, subtitle, children }) {
     }
   }, [open, onClose])
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {open && (
         <motion.div
@@ -50,6 +51,7 @@ export default function Modal({ open, onClose, title, subtitle, children }) {
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   )
 }
