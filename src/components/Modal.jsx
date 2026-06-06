@@ -22,7 +22,7 @@ export default function Modal({ open, onClose, title, subtitle, children }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[100] flex items-start sm:items-center justify-center overflow-y-auto p-4 py-8"
         >
           <div
             className="absolute inset-0 bg-haven-charcoal/40 backdrop-blur-sm"
@@ -33,7 +33,7 @@ export default function Modal({ open, onClose, title, subtitle, children }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.97 }}
             transition={{ type: 'spring', stiffness: 280, damping: 26 }}
-            className="relative w-full max-w-md rounded-2xl bg-white p-7 shadow-warm-lg"
+            className="relative my-auto max-h-[calc(100vh-4rem)] w-full max-w-md overflow-y-auto rounded-2xl bg-white p-7 shadow-warm-lg"
             role="dialog"
             aria-modal="true"
           >
