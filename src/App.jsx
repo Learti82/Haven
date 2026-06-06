@@ -12,6 +12,8 @@ import Footer from './components/Footer'
 export default function App() {
   // Saved (favourited) property ids, toggled from the card heart buttons.
   const [savedIds, setSavedIds] = useState([])
+  // Active quick-filter pill ('For Sale' | 'To Rent' | 'New Builds' | 'Luxury' | null).
+  const [filter, setFilter] = useState(null)
 
   function toggleSave(id) {
     setSavedIds((prev) =>
@@ -19,12 +21,22 @@ export default function App() {
     )
   }
 
+  // Selecting the active pill again clears the filter (toggle behaviour).
+  function selectFilter(pill) {
+    setFilter((prev) => (prev === pill ? null : pill))
+  }
+
   return (
     <div className="min-h-screen bg-haven-bg">
-      <Navbar />
+      <Navbar onFilter={setFilter} />
       <main>
-        <Hero />
-        <FeaturedListings savedIds={savedIds} onToggleSave={toggleSave} />
+        <Hero filter={filter} onSelectFilter={selectFilter} />
+        <FeaturedListings
+          savedIds={savedIds}
+          onToggleSave={toggleSave}
+          filter={filter}
+          onClearFilter={() => setFilter(null)}
+        />
         <BrowseByArea />
         <WhyHaven />
         <AgentSpotlight />

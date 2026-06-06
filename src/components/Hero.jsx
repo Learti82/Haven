@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { SearchIcon, ChevronDown } from './Icons'
+import { scrollToId } from '../utils'
 
 const fields = [
   { label: 'Location', options: ['Any location', 'London', 'Bath', 'Cornwall', 'Cotswolds'] },
@@ -19,13 +20,13 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 }
 
-export default function Hero() {
+export default function Hero({ filter, onSelectFilter }) {
   return (
-    <section className="relative overflow-hidden bg-hero-gradient">
-      {/* Real hero photograph */}
+    <section id="top" className="relative overflow-hidden bg-hero-gradient">
+      {/* Real hero photograph (distinct from any listing image) */}
       <img
-        src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80"
-        alt="A beautiful modern home at golden hour"
+        src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=2000&q=80"
+        alt="A striking contemporary luxury home"
         className="absolute inset-0 h-full w-full object-cover"
       />
       {/* Warm gradient overlay keeps the brand palette while letting the photo show through */}
@@ -96,6 +97,7 @@ export default function Hero() {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
+              onClick={() => scrollToId('listings')}
               className="flex items-center justify-center gap-2 rounded-xl sm:rounded-full bg-haven-terracotta px-7 py-3.5 font-semibold text-white shadow-warm-sm transition-colors hover:bg-haven-terracottaDark"
             >
               <SearchIcon className="h-5 w-5" />
@@ -104,13 +106,17 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Quick filter pills */}
+        {/* Quick filter pills — drive the featured listings grid */}
         <motion.div variants={item} className="mt-7 flex flex-wrap items-center justify-center gap-3">
-          {pills.map((pill, i) => (
+          {pills.map((pill) => (
             <button
               key={pill}
+              onClick={() => {
+                onSelectFilter(pill)
+                scrollToId('listings')
+              }}
               className={`rounded-full px-5 py-2 text-sm font-medium backdrop-blur-sm transition-all ${
-                i === 0
+                filter === pill
                   ? 'bg-haven-charcoal text-white shadow-warm-sm'
                   : 'bg-white/45 text-haven-charcoal/85 hover:bg-white/70'
               }`}
