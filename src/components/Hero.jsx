@@ -22,6 +22,16 @@ const item = {
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-hero-gradient">
+      {/* Real hero photograph */}
+      <img
+        src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80"
+        alt="A beautiful modern home at golden hour"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      {/* Warm gradient overlay keeps the brand palette and text legible over the photo */}
+      <div className="absolute inset-0 bg-gradient-to-br from-haven-cream/92 via-haven-beige/70 to-haven-terracotta/75" />
+      <div className="absolute inset-0 bg-gradient-to-t from-haven-charcoal/15 via-transparent to-transparent" />
+
       {/* Soft decorative blobs */}
       <div className="pointer-events-none absolute -top-24 -right-16 h-80 w-80 rounded-full bg-white/20 blur-3xl" />
       <div className="pointer-events-none absolute bottom-0 -left-24 h-96 w-96 rounded-full bg-haven-terracotta/30 blur-3xl" />
