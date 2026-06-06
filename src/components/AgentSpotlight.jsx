@@ -15,7 +15,7 @@ function Stars({ rating }) {
 
 export default function AgentSpotlight() {
   return (
-    <section className="py-20 sm:py-24">
+    <section id="agents" className="py-20 sm:py-24 scroll-mt-20">
       <div className="section-px mb-10 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
         <div>
           <span className="text-sm font-semibold uppercase tracking-widest text-haven-terracotta">
